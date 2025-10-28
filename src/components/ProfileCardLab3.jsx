@@ -1,9 +1,11 @@
-import React from 'react'; 
+import { useContext } from 'react';
 import ProfileParagraph from './ProfileParagraph';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import RatingBar from './RatingBar';
+import AppContext from '../data/AppContext';
+import { Link } from 'react-router-dom';
 
 
 function ProfileCardLab3({ 
@@ -13,15 +15,11 @@ function ProfileCardLab3({
   phone, 
   birthDate, 
   rating, 
-  check,  
-  dispatch 
+  check
 }) {
 
-  const handleEdit = () => {
-    console.log(`(Lab 3) Edit: ${name}`);
-  };
-
-
+  const context = useContext(AppContext);
+  const dispatch = context.dispatch;
 
   const handleDelete = () => {
     dispatch({ 
@@ -70,7 +68,9 @@ function ProfileCardLab3({
         />
 
         <ButtonGroup className="mt-auto">
-          <Button variant="outline-primary" size="sm" onClick={handleEdit}>Edit</Button>
+          <Button variant="outline-primary" size="sm" as={Link} to={`/lab4/edit/${id}`}>
+            Edit
+          </Button>
           <Button variant="outline-danger" size="sm" onClick={handleDelete}>Delete</Button>
           <Button variant="outline-success" size="sm" onClick={handleRate}>Rate</Button>
         </ButtonGroup>

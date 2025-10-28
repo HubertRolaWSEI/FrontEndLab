@@ -1,8 +1,12 @@
+import React, { useContext } from 'react';
 import ProfileCard from '../components/ProfileCard';
 import ProfileGrid from '../components/ProfileGrid';
-import { people } from '../module-data';
+import AppContext from '../data/AppContext';
 
 function Lab01() {
+  const context = useContext(AppContext);
+  const people = context.items;
+
   return (
     <>
       <h2>Lab01</h2>
@@ -22,5 +26,3 @@ function Lab01() {
 }
 
 export default Lab01;
-
-

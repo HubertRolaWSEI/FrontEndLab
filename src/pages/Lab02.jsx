@@ -1,9 +1,12 @@
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { people } from '../module-data';
+import AppContext from '../data/AppContext';
 import ProfileCard from '../components/ProfileCard';
 
 function Lab02() {
   const { id } = useParams();
+  const context = useContext(AppContext);
+  const people = context.items;
 
   if (!id) {
     return <p>Brak identyfikatora osoby.</p>;
@@ -34,5 +37,3 @@ function Lab02() {
 }
 
 export default Lab02;
-
-
