@@ -32,15 +32,12 @@ function Lab4Add() {
       newErrors.birthDate = "Data urodzenia jest wymagana.";
     }
     
-    try {
-      if (data.get("photo")) new URL(data.get("photo"));
-    } catch (e) {
-      newErrors.photo = "Wprowadzono niepoprawny URL zdjęcia.";
+    // Walidacja dla nowych pól (opcjonalna, sprawdzamy czy nie są puste)
+    if (!data.get("eyeColor")) {
+      newErrors.eyeColor = "Kolor oczu jest wymagany.";
     }
-    try {
-      if (data.get("url")) new URL(data.get("url"));
-    } catch (e) {
-      newErrors.url = "Wprowadzono niepoprawny URL strony www.";
+    if (!data.get("birthPlace")) {
+      newErrors.birthPlace = "Miejsce urodzenia jest wymagane.";
     }
 
     return newErrors;
@@ -66,12 +63,11 @@ function Lab4Add() {
       email: data.get("email"),
       phone: data.get("phone"),
       birthDate: data.get("birthDate"),
-      photo: data.get("photo"),
-      url: data.get("url"),
+      eyeColor: data.get("eyeColor"),   // Zmienione
+      birthPlace: data.get("birthPlace"), // Zmienione
       rating: 0,
       check: false
     };
-
 
     dispatch({ type: "add", person: newPerson });
 
@@ -84,7 +80,7 @@ function Lab4Add() {
 
   return (
     <>
-      <h2>Lab 4 - Dodaj profil</h2>
+      <h2>Dodawanie nowego profilu</h2>
 
       {Object.keys(errors).length > 0 && (
         <Alert variant="danger">
@@ -117,13 +113,13 @@ function Lab4Add() {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="photo">URL Zdjęcia (nowe pole)</Form.Label>
-          <FormControl id="photo" type="url" name="photo" placeholder="https://..." isInvalid={!!errors.photo} />
+          <Form.Label htmlFor="eyeColor">Kolor oczu</Form.Label>
+          <FormControl required id="eyeColor" type="text" name="eyeColor" isInvalid={!!errors.eyeColor} />
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="url">URL Strony WWW (nowe pole)</Form.Label>
-          <FormControl id="url" type="url" name="url" placeholder="https://..." isInvalid={!!errors.url} />
+          <Form.Label htmlFor="birthPlace">Miejsce urodzenia</Form.Label>
+          <FormControl required id="birthPlace" type="text" name="birthPlace" isInvalid={!!errors.birthPlace} />
         </Form.Group>
 
         <div className="d-grid">

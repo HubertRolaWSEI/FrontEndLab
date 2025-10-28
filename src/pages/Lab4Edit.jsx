@@ -18,8 +18,8 @@ function Lab4Edit() {
       email: personToEdit?.email,
       phone: personToEdit?.phone,
       birthDate: personToEdit?.birthDate,
-      photo: personToEdit?.photo || '',
-      url: personToEdit?.url || ''
+      eyeColor: personToEdit?.eyeColor || '',   
+      birthPlace: personToEdit?.birthPlace || ''  
     }
   });
 
@@ -43,7 +43,7 @@ function Lab4Edit() {
 
   return (
     <>
-      <h2>Lab 4 - Edytuj profil (React Hook Form)</h2>
+      <h2>LAB 4 - EDYTUJ PROFIL</h2>
       
       {Object.keys(errors).length > 0 && (
         <Alert variant="danger">
@@ -51,8 +51,8 @@ function Lab4Edit() {
           {errors.email && <p className="mb-0">{errors.email.message}</p>}
           {errors.phone && <p className="mb-0">{errors.phone.message}</p>}
           {errors.birthDate && <p className="mb-0">{errors.birthDate.message}</p>}
-          {errors.photo && <p className="mb-0">{errors.photo.message}</p>}
-          {errors.url && <p className="mb-0">{errors.url.message}</p>}
+          {errors.eyeColor && <p className="mb-0">{errors.eyeColor.message}</p>}
+          {errors.birthPlace && <p className="mb-0">{errors.birthPlace.message}</p>}
         </Alert>
       )}
 
@@ -108,24 +108,22 @@ function Lab4Edit() {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="photo">URL Zdjęcia (nowe pole)</Form.Label>
+          <Form.Label htmlFor="eyeColor">Kolor oczu</Form.Label>
           <FormControl 
-            id="photo" 
-            type="url" 
-            placeholder="https://..." 
-            {...register("photo")} 
-            isInvalid={!!errors.photo}
+            id="eyeColor" 
+            type="text" 
+            {...register("eyeColor", { required: "Kolor oczu jest wymagany." })} 
+            isInvalid={!!errors.eyeColor}
           />
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label htmlFor="url">URL Strony WWW (nowe pole)</Form.Label>
+          <Form.Label htmlFor="birthPlace">Miejsce urodzenia</Form.Label>
           <FormControl 
-            id="url" 
-            type="url" 
-            placeholder="https://..." 
-            {...register("url")} 
-            isInvalid={!!errors.url}
+            id="birthPlace" 
+            type="text" 
+            {...register("birthPlace", { required: "Miejsce urodzenia jest wymagane." })} 
+            isInvalid={!!errors.birthPlace}
           />
         </Form.Group>
 

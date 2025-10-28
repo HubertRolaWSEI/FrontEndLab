@@ -4,15 +4,18 @@ export default function AppReducer(state, action){
         case "add":
             const newId = Math.max(...state.map(p => p.id)) + 1;
             const newPerson = {
-                ...action.person,
-                id: newId
+                ...action.person, // Zawiera eyeColor i birthPlace
+                id: newId,
+                photo: null, // Stare pole ustawione na null
+                url: null    // Stare pole ustawione na null
             };
             return [...state, newPerson];
 
         case "edit":
             return state.map(person => {
                 if (person.id === Number(action.person.id)) {
-                    return { ...person, ...action.person };
+                    // Łączymy, nadpisując stary obiekt nowymi danymi
+                    return { ...person, ...action.person }; 
                 } else {
                     return person;
                 }

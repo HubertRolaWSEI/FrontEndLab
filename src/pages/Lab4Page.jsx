@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from 'react-bootstrap'; // 1. Importuj Button
-import { Link } from 'react-router-dom';   // 2. Importuj Link
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Lab4Page() {
   return (
@@ -8,8 +8,17 @@ function Lab4Page() {
       <h2>Lab4</h2>
       <p>Strona główna laboratorium 4.</p>
       
-      {/* 3. Dodaj przycisk jako Link */}
-      <Button as={Link} to="/lab4/add" variant="primary" size="lg" className="mt-3">
+      <Button 
+        as={Link} 
+        to="/lab4/add" 
+        variant="light" 
+        size="lg" 
+        className="mt-3"
+        style={{ 
+          backgroundColor: '#15dc0eff', 
+          borderColor: '#000000ff'      
+        }}
+      >
         Dodaj Nowy Profil
       </Button>
     </>
