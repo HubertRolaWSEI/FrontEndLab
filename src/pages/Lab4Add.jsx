@@ -32,7 +32,6 @@ function Lab4Add() {
       newErrors.birthDate = "Data urodzenia jest wymagana.";
     }
     
-    // Walidacja dla nowych pól (opcjonalna, sprawdzamy czy nie są puste)
     if (!data.get("eyeColor")) {
       newErrors.eyeColor = "Kolor oczu jest wymagany.";
     }
@@ -63,8 +62,8 @@ function Lab4Add() {
       email: data.get("email"),
       phone: data.get("phone"),
       birthDate: data.get("birthDate"),
-      eyeColor: data.get("eyeColor"),   // Zmienione
-      birthPlace: data.get("birthPlace"), // Zmienione
+      eyeColor: data.get("eyeColor"), 
+      birthPlace: data.get("birthPlace"),
       rating: 0,
       check: false
     };

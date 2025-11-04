@@ -1,4 +1,3 @@
-import { useReducer } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
@@ -12,24 +11,15 @@ import Lab4Add from './pages/Lab4Add';
 import Lab4Edit from './pages/Lab4Edit';
 import NotFound from './pages/NotFound';
 
-import AppContext from './data/AppContext';
-import AppReducer from './data/AppReducer';
-import { people } from './module-data';
-
-const init = (initialData) => {
-  return initialData.map(person => ({
-    ...person,
-    rating: person.rating || 0,
-    check: person.check || false
-  }));
-};
+import AppProvider from './data/AppProvider';
+import Lab5Page from './pages/Lab5Page';      
+import Lab5User from './pages/Lab5User';     
+import Lab5PostComments from './pages/Lab5PostComments'; 
 
 function App() {
 
-  const [state, appDispatch] = useReducer(AppReducer, people, init);
-
   return (
-    <AppContext.Provider value={{ items: state, dispatch: appDispatch }}>
+    <AppProvider>
       <Routes>
         <Route element={<RootLayout />}>
           <Route path="home" element={<Home />} />
@@ -44,10 +34,16 @@ function App() {
             <Route path="edit/:id" element={<Lab4Edit />} />
           </Route>
 
+          <Route path="lab5">
+            <Route index element={<Lab5Page />} />
+            <Route path="users/:id" element={<Lab5User />} />
+            <Route path="posts/:id/comments" element={<Lab5PostComments />} />
+          </Route>
+
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </AppContext.Provider>
+    </AppProvider>
   )
 }
 

@@ -1,19 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react'; 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import AppContext from '../data/AppContext';
+import useData from '../data/useData';    
+import useDispatch from '../data/useDispatch'; 
 
 function DataContainer({ element: ElementComponent, columns = 3 }) {
-
-  const { items, dispatch } = useContext(AppContext);
-
+  const items = useData();
+  const dispatch = useDispatch();
   if (!ElementComponent || !items) {
     return <p>Brak komponentu 'element' lub danych 'items' w kontekście.</p>;
   }
-
   const columnClass = `row row-cols-1 row-cols-sm-2 row-cols-md-${columns} g-4`;
-
   return (
     <Container className="my-4">
       <Row className={columnClass}>
@@ -26,5 +24,4 @@ function DataContainer({ element: ElementComponent, columns = 3 }) {
     </Container>
   );
 }
-
 export default DataContainer;

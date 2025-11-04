@@ -1,7 +1,6 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
-// import NavDropdown from 'react-bootstrap/NavDropdown'; // Już niepotrzebne
 import { NavLink } from 'react-router-dom';
 
 function NavBarMenuApp() {
@@ -20,8 +19,8 @@ function NavBarMenuApp() {
             <Nav.Link as={NavLink} to="/lab01">Laboratorium 1</Nav.Link>
             <Nav.Link as={NavLink} to="/lab02">Laboratorium 2</Nav.Link>
             <Nav.Link as={NavLink} to="/lab3">Laboratorium 3</Nav.Link>
-            {/* Przywrócony pojedynczy link */}
             <Nav.Link as={NavLink} to="/lab4">Laboratorium 4</Nav.Link>
+            <Nav.Link as={NavLink} to="/lab5">Laboratorium 5</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
