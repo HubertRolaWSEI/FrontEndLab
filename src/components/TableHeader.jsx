@@ -7,19 +7,13 @@ function TableHeader({ title, sortKey, dispatch }) {
     dispatch({ type: type, key: sortKey });
   };
 
-  const greenButtonStyle = {
-    backgroundColor: '#ffffffff',
-    borderColor: '#ffffffff', 
-    color: '#ffffff'         
-  };
-
   return (
     <th style={{ padding: '0.5rem' }}> 
       <DropdownButton 
         id={`dropdown-${sortKey}`} 
         title={title} 
         size="sm"
-        style={greenButtonStyle} 
+        className="btn-custom-green"
       >
         <Dropdown.Item onClick={() => handleSort('SORT_ASC')}>
           Sortuj Rosnąco (A-Z, 0-9)

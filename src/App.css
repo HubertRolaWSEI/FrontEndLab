@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+
+.btn-custom-green .dropdown-toggle {
+  background-color: #15dc0eff !important;
+  border-color: #15dc0eff !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+.btn-custom-green .dropdown-toggle:hover,
+.btn-custom-green .dropdown-toggle:focus,
+.btn-custom-green .dropdown-toggle:active,
+.btn-custom-green .dropdown-toggle.show { 
+  background-color: #12b80cff !important; 
+  border-color: #12b80cff !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
